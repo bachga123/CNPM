@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c213ebbd7cb14a808da70cac5b577bcd" Name="Diagram1">
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Account" Width="1.5" PointX="1.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Airport" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.AirStopOver" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Customer" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Employee" Width="1.5" PointX="3.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Flight" Width="1.5" PointX="10.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Plane" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Role" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.Ticket" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.TicketTemp" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.TypePlane" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_DHT_NHOM19Model.TypeTicket" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__Customer__Accoun__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__Employee__Accoun__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__Ticket__CusId__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__Flight__PlaneId__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__Plane__TypeId__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__Ticket__TypeTick__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_DHT_NHOM19Model.FK__TicketTem__TypeT__34C8D9D1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

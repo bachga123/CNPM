@@ -27,14 +27,15 @@ namespace BanVeMayBay.Models
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Airport> Airports { get; set; }
+        public virtual DbSet<AirStopOver> AirStopOvers { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Flight> Flights { get; set; }
         public virtual DbSet<Plane> Planes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Seat> Seats { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<TicketTemp> TicketTemps { get; set; }
         public virtual DbSet<TypePlane> TypePlanes { get; set; }
         public virtual DbSet<TypeTicket> TypeTickets { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
     }
 }

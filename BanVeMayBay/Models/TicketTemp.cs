@@ -12,17 +12,16 @@ namespace BanVeMayBay.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Flight
+    public partial class TicketTemp
     {
         public int Id { get; set; }
-        public Nullable<int> PlaneId { get; set; }
-        public string SanBayDi { get; set; }
-        public string SanBayDen { get; set; }
-        public Nullable<System.DateTime> NgayGio { get; set; }
-        public Nullable<int> ThoiGianbay { get; set; }
-        public Nullable<int> SoLuongGheHang1 { get; set; }
-        public Nullable<int> SoLuongGheHang2 { get; set; }
+        public Nullable<int> TypeTicketId { get; set; }
+        public Nullable<int> FlightId { get; set; }
+        public string NameOfCustomer { get; set; }
+        public string CMND { get; set; }
+        public string SDT { get; set; }
+        public Nullable<decimal> Price { get; set; }
     
-        public virtual Plane Plane { get; set; }
+        public virtual TypeTicket TypeTicket { get; set; }
     }
 }

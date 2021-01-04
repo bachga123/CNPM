@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNPM_DHT_NHOM19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="PassWord" Type="varchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="ResetPasswordCode" Type="varchar" MaxLength="150" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="ActivePasswordCode" Type="nvarchar" MaxLength="150" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nation" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AirStopOver">
+    <Key>
+      <PropertyRef Name="StopID" />
+    </Key>
+    <Property Name="StopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightId" Type="int" />
+    <Property Name="TenSanBayTrungGian" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThoiGianDung" Type="int" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="30" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="30" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" />
+    <Property Name="CMND" Type="varchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="AccountID" Type="int" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="30" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="30" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" />
+    <Property Name="CMND" Type="varchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="AccountID" Type="int" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaneId" Type="int" />
+    <Property Name="SanBayDi" Type="nvarchar" MaxLength="50" />
+    <Property Name="SanBayDen" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayGio" Type="datetime" />
+    <Property Name="ThoiGianbay" Type="int" />
+    <Property Name="SoLuongGheHang1" Type="int" />
+    <Property Name="SoLuongGheHang2" Type="int" />
+  </EntityType>
+  <EntityType Name="Plane">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeId" Type="int" />
+    <Property Name="SoGheHang1" Type="int" />
+    <Property Name="SoGheHang2" Type="int" />
+    <Property Name="TongSoGhe" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeTicketId" Type="int" />
+    <Property Name="FlightId" Type="int" />
+    <Property Name="CusId" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="TicketTemp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeTicketId" Type="int" />
+    <Property Name="FlightId" Type="int" />
+    <Property Name="NameOfCustomer" Type="nvarchar" MaxLength="50" />
+    <Property Name="CMND" Type="nvarchar" MaxLength="15" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TypePlane">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeTicket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK__Customer__Accoun__182C9B23">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Accoun__1CF15040">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__PlaneId__2A4B4B5E">
+    <End Role="Plane" Type="Self.Plane" Multiplicity="0..1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plane">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="PlaneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Plane__TypeId__239E4DCF">
+    <End Role="TypePlane" Type="Self.TypePlane" Multiplicity="0..1" />
+    <End Role="Plane" Type="Self.Plane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypePlane">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Plane">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__CusId__31EC6D26">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="CusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__TypeTick__30F848ED">
+    <End Role="TypeTicket" Type="Self.TypeTicket" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeTicket">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="TypeTicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TicketTem__TypeT__34C8D9D1">
+    <End Role="TypeTicket" Type="Self.TypeTicket" Multiplicity="0..1" />
+    <End Role="TicketTemp" Type="Self.TicketTemp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeTicket">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TicketTemp">
+        <PropertyRef Name="TypeTicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CNPM_DHT_NHOM19ModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AirStopOver" EntityType="Self.AirStopOver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plane" EntityType="Self.Plane" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketTemp" EntityType="Self.TicketTemp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypePlane" EntityType="Self.TypePlane" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeTicket" EntityType="Self.TypeTicket" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Customer__Accoun__182C9B23" Association="Self.FK__Customer__Accoun__182C9B23">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Accoun__1CF15040" Association="Self.FK__Employee__Accoun__1CF15040">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__PlaneId__2A4B4B5E" Association="Self.FK__Flight__PlaneId__2A4B4B5E">
+      <End Role="Plane" EntitySet="Plane" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Plane__TypeId__239E4DCF" Association="Self.FK__Plane__TypeId__239E4DCF">
+      <End Role="TypePlane" EntitySet="TypePlane" />
+      <End Role="Plane" EntitySet="Plane" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__CusId__31EC6D26" Association="Self.FK__Ticket__CusId__31EC6D26">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__TypeTick__30F848ED" Association="Self.FK__Ticket__TypeTick__30F848ED">
+      <End Role="TypeTicket" EntitySet="TypeTicket" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TicketTem__TypeT__34C8D9D1" Association="Self.FK__TicketTem__TypeT__34C8D9D1">
+      <End Role="TypeTicket" EntitySet="TypeTicket" />
+      <End Role="TicketTemp" EntitySet="TicketTemp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

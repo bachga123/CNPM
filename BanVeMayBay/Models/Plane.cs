@@ -18,19 +18,19 @@ namespace BanVeMayBay.Models
         public Plane()
         {
             this.Flights = new HashSet<Flight>();
-            this.Seats = new HashSet<Seat>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<int> TypeId { get; set; }
+        public Nullable<int> SoGheHang1 { get; set; }
+        public Nullable<int> SoGheHang2 { get; set; }
+        public Nullable<int> TongSoGhe { get; set; }
         public System.DateTime CreateDate { get; set; }
         public System.DateTime ModifyDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flight> Flights { get; set; }
         public virtual TypePlane TypePlane { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seat> Seats { get; set; }
     }
 }

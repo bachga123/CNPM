@@ -1,0 +1,136 @@
+﻿@model BanVeMayBay.Models.Flight
+
+@{
+    ViewBag.Title = "FlightDetails";
+    Layout = "~/Areas/Employee/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<h2>FlightDetails</h2>
+
+<div class="content">
+    <div class="container-fluid">
+        <div>
+            <h4>Flight</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SanBayDi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SanBayDi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SanBayDen)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SanBayDen)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NgayGio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NgayGio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ThoiGianbay)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ThoiGianbay)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SoLuongGheHang1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SoLuongGheHang1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SoLuongGheHang2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SoLuongGheHang2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Plane.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Plane.Name)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="table table-hover">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h5 class="m-0 font-weight-bold text-primary">Airstop</h5>
+                        </div>
+                        <div class="col-sm-2">
+                            @if (ViewBag.airStop != null)
+                            {
+                                if (ViewBag.airStop.Count < 2)
+                                {
+                                <a class="btn btn-primary" href="@Url.Action("AddStopStationForFlight", "Ticket", new { id = Model.Id })">Add AirStop</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Ten Tram</th>
+                                            <th>Thoi Gian Dung</th>
+                                            <th>Ghi chu</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.airStop != null)
+                                        {
+                                            foreach (var item in ViewBag.airStop)
+                                            {
+                                                <tr>
+                                                    <td>@item.Airport.Name</td>
+                                                    <td>@item.ThoiGianDung</td>
+                                                    <td>@item.GhiChu</td>
+                                                    <td>
+                                                        <a>
+                                                            @Html.ActionLink("Edit", "EditAirStop", new { id = item.StopID }, new { @class = "btn btn-primary" })
+                                                        </a>
+                                                        @*<a href="@Url.Action("EditUser","User",new { Id = item.Id })" class="btn btn-success"> Edit User</a>*@
+                                                        <a href="@Url.Action("DeleteAirstop", "Ticket", new { id = item.StopID })" onclick="return confirm('Are you sure to delete this flight?');" class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

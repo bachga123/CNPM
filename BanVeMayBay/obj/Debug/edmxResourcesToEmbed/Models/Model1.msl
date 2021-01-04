@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CNPM_DHT_NHOM19ModelStoreContainer" CdmEntityContainer="CNPM_DHT_NHOM19Entities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ActivePasswordCode" ColumnName="ActivePasswordCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Airports">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Airport">
+        <MappingFragment StoreEntitySet="Airport">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Nation" ColumnName="Nation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AirStopOvers">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.AirStopOver">
+        <MappingFragment StoreEntitySet="AirStopOver">
+          <ScalarProperty Name="StopID" ColumnName="StopID" />
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="TenSanBayTrungGian" ColumnName="TenSanBayTrungGian" />
+          <ScalarProperty Name="ThoiGianDung" ColumnName="ThoiGianDung" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flights">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Flight">
+        <MappingFragment StoreEntitySet="Flight">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PlaneId" ColumnName="PlaneId" />
+          <ScalarProperty Name="SanBayDi" ColumnName="SanBayDi" />
+          <ScalarProperty Name="SanBayDen" ColumnName="SanBayDen" />
+          <ScalarProperty Name="NgayGio" ColumnName="NgayGio" />
+          <ScalarProperty Name="ThoiGianbay" ColumnName="ThoiGianbay" />
+          <ScalarProperty Name="SoLuongGheHang1" ColumnName="SoLuongGheHang1" />
+          <ScalarProperty Name="SoLuongGheHang2" ColumnName="SoLuongGheHang2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planes">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Plane">
+        <MappingFragment StoreEntitySet="Plane">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="SoGheHang1" ColumnName="SoGheHang1" />
+          <ScalarProperty Name="SoGheHang2" ColumnName="SoGheHang2" />
+          <ScalarProperty Name="TongSoGhe" ColumnName="TongSoGhe" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeTicketId" ColumnName="TypeTicketId" />
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="CusId" ColumnName="CusId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketTemps">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.TicketTemp">
+        <MappingFragment StoreEntitySet="TicketTemp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeTicketId" ColumnName="TypeTicketId" />
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="NameOfCustomer" ColumnName="NameOfCustomer" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypePlanes">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.TypePlane">
+        <MappingFragment StoreEntitySet="TypePlane">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeTickets">
+      <EntityTypeMapping TypeName="CNPM_DHT_NHOM19Model.TypeTicket">
+        <MappingFragment StoreEntitySet="TypeTicket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

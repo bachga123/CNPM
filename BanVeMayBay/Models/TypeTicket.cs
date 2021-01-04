@@ -18,14 +18,16 @@ namespace BanVeMayBay.Models
         public TypeTicket()
         {
             this.Tickets = new HashSet<Ticket>();
+            this.TicketTemps = new HashSet<TicketTemp>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public System.DateTime ModifyDate { get; set; }
+        public Nullable<decimal> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TicketTemp> TicketTemps { get; set; }
     }
 }

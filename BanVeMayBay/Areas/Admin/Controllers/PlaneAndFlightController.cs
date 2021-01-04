@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BanVeMayBay.Models;
 using BanVeMayBay.Areas.Admin.Data;
 using System.Data.Entity;
+using PagedList;
 namespace BanVeMayBay.Areas.Admin.Controllers
 {
     public class PlaneAndFlightController : Controller
@@ -14,6 +15,9 @@ namespace BanVeMayBay.Areas.Admin.Controllers
         // GET: Admin/PlaneAndFlight
         public ActionResult Index()
         {
+            ViewBag.planeList = PlaneList().ToPagedList(1,5);
+            ViewBag.TypePlane = TypePlaneList();
+            ViewBag.airportList = AirportList().ToPagedList(1, 5);
             return View();
         }
         public ActionResult AddAirport()
@@ -21,6 +25,7 @@ namespace BanVeMayBay.Areas.Admin.Controllers
             AirportManager ap = new AirportManager();
             return View(ap);
         }
+        [HttpPost]
         public ActionResult AddAirport(AirportManager ap)
         {
             if (ModelState.IsValid)
@@ -28,8 +33,6 @@ namespace BanVeMayBay.Areas.Admin.Controllers
                 Airport app = new Airport();
                 app.Name = ap.Name;
                 app.Name = ap.Nation;
-                app.CreateDate = DateTime.Now;
-                app.ModifyDate = DateTime.Now;
                 db.Entry(app).State = EntityState.Added;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -56,7 +59,6 @@ namespace BanVeMayBay.Areas.Admin.Controllers
                 var app = db.Airports.Find(ap.id);
                 app.Name = ap.Name;
                 app.Nation = ap.Nation;
-                app.ModifyDate = DateTime.Now;
                 db.Entry(app).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");     
@@ -122,6 +124,7 @@ namespace BanVeMayBay.Areas.Admin.Controllers
 
         public ActionResult AddPlane()
         {
+            ViewBag.typePlane = new SelectList(TypePlaneSelectList(), "value", "text");
             Plane p = new Plane();
             return View("AddPlane", p);
         }
@@ -130,12 +133,16 @@ namespace BanVeMayBay.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
+                p.TongSoGhe = p.SoGheHang1 + p.SoGheHang2;
+                p.CreateDate = DateTime.Now;
+                p.ModifyDate = DateTime.Now;
                 db.Entry(p).State = EntityState.Added;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
             {
+                ViewBag.typePlane = new SelectList(TypePlaneSelectList(), "value", "text");
                 return View("AddPlane", p);
             }
         }
@@ -165,6 +172,48 @@ namespace BanVeMayBay.Areas.Admin.Controllers
             db.Entry(p).State = EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public List<Airport> AirportList()
+        {
+            var apl = db.Airports.ToList();
+            return apl;
+        }
+        public List<SelectListItem> AirportListItem()
+        {
+            List<SelectListItem> apsl = new List<SelectListItem>();
+            var apl = AirportList();
+            foreach(var item in apl)
+            {
+                SelectListItem ap = new SelectListItem();
+                ap.Value = item.Id.ToString();
+                ap.Text = item.Name;
+                apsl.Add(ap);
+            }
+            return apsl;
+        }
+
+        public List<TypePlane> TypePlaneList()
+        {
+            return db.TypePlanes.ToList();
+        }
+        public List<SelectListItem> TypePlaneSelectList()
+        {
+            List<SelectListItem> tpsl = new List<SelectListItem>();
+            var tpl = TypePlaneList();
+            foreach (var item in tpl)
+            {
+                SelectListItem ap = new SelectListItem();
+                ap.Value = item.Id.ToString();
+                ap.Text = item.Name;
+                tpsl.Add(ap);
+            }
+            return tpsl;
+        }
+
+        public List<Plane> PlaneList()
+        {
+            return db.Planes.ToList();
         }
 
     }

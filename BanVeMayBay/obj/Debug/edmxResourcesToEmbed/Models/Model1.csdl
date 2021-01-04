@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNPM_DHT_NHOM19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ActivePasswordCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Accoun__182C9B23" FromRole="Account" ToRole="Customer" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Accoun__1CF15040" FromRole="Account" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AirStopOver">
+    <Key>
+      <PropertyRef Name="StopID" />
+    </Key>
+    <Property Name="StopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FlightId" Type="Int32" />
+    <Property Name="TenSanBayTrungGian" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianDung" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Lname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CMND" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AccountID" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Customer__Accoun__182C9B23" FromRole="Customer" ToRole="Account" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__CusId__31EC6D26" FromRole="Customer" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Lname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CMND" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AccountID" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Employee__Accoun__1CF15040" FromRole="Employee" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlaneId" Type="Int32" />
+    <Property Name="SanBayDi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SanBayDen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayGio" Type="DateTime" Precision="3" />
+    <Property Name="ThoiGianbay" Type="Int32" />
+    <Property Name="SoLuongGheHang1" Type="Int32" />
+    <Property Name="SoLuongGheHang2" Type="Int32" />
+    <NavigationProperty Name="Plane" Relationship="Self.FK__Flight__PlaneId__2A4B4B5E" FromRole="Flight" ToRole="Plane" />
+  </EntityType>
+  <EntityType Name="Plane">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeId" Type="Int32" />
+    <Property Name="SoGheHang1" Type="Int32" />
+    <Property Name="SoGheHang2" Type="Int32" />
+    <Property Name="TongSoGhe" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Flights" Relationship="Self.FK__Flight__PlaneId__2A4B4B5E" FromRole="Plane" ToRole="Flight" />
+    <NavigationProperty Name="TypePlane" Relationship="Self.FK__Plane__TypeId__239E4DCF" FromRole="Plane" ToRole="TypePlane" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeTicketId" Type="Int32" />
+    <Property Name="FlightId" Type="Int32" />
+    <Property Name="CusId" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Ticket__CusId__31EC6D26" FromRole="Ticket" ToRole="Customer" />
+    <NavigationProperty Name="TypeTicket" Relationship="Self.FK__Ticket__TypeTick__30F848ED" FromRole="Ticket" ToRole="TypeTicket" />
+  </EntityType>
+  <EntityType Name="TicketTemp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeTicketId" Type="Int32" />
+    <Property Name="FlightId" Type="Int32" />
+    <Property Name="NameOfCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="TypeTicket" Relationship="Self.FK__TicketTem__TypeT__34C8D9D1" FromRole="TicketTemp" ToRole="TypeTicket" />
+  </EntityType>
+  <EntityType Name="TypePlane">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Planes" Relationship="Self.FK__Plane__TypeId__239E4DCF" FromRole="TypePlane" ToRole="Plane" />
+  </EntityType>
+  <EntityType Name="TypeTicket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__TypeTick__30F848ED" FromRole="TypeTicket" ToRole="Ticket" />
+    <NavigationProperty Name="TicketTemps" Relationship="Self.FK__TicketTem__TypeT__34C8D9D1" FromRole="TypeTicket" ToRole="TicketTemp" />
+  </EntityType>
+  <Association Name="FK__Customer__Accoun__182C9B23">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Accoun__1CF15040">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__CusId__31EC6D26">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="CusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__PlaneId__2A4B4B5E">
+    <End Role="Plane" Type="Self.Plane" Multiplicity="0..1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plane">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="PlaneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Plane__TypeId__239E4DCF">
+    <End Role="TypePlane" Type="Self.TypePlane" Multiplicity="0..1" />
+    <End Role="Plane" Type="Self.Plane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypePlane">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Plane">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__TypeTick__30F848ED">
+    <End Role="TypeTicket" Type="Self.TypeTicket" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeTicket">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="TypeTicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TicketTem__TypeT__34C8D9D1">
+    <End Role="TypeTicket" Type="Self.TypeTicket" Multiplicity="0..1" />
+    <End Role="TicketTemp" Type="Self.TicketTemp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeTicket">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TicketTemp">
+        <PropertyRef Name="TypeTicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CNPM_DHT_NHOM19Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Airports" EntityType="Self.Airport" />
+    <EntitySet Name="AirStopOvers" EntityType="Self.AirStopOver" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Flights" EntityType="Self.Flight" />
+    <EntitySet Name="Planes" EntityType="Self.Plane" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+    <EntitySet Name="TicketTemps" EntityType="Self.TicketTemp" />
+    <EntitySet Name="TypePlanes" EntityType="Self.TypePlane" />
+    <EntitySet Name="TypeTickets" EntityType="Self.TypeTicket" />
+    <AssociationSet Name="FK__Customer__Accoun__182C9B23" Association="Self.FK__Customer__Accoun__182C9B23">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Accoun__1CF15040" Association="Self.FK__Employee__Accoun__1CF15040">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__CusId__31EC6D26" Association="Self.FK__Ticket__CusId__31EC6D26">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__PlaneId__2A4B4B5E" Association="Self.FK__Flight__PlaneId__2A4B4B5E">
+      <End Role="Plane" EntitySet="Planes" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Plane__TypeId__239E4DCF" Association="Self.FK__Plane__TypeId__239E4DCF">
+      <End Role="TypePlane" EntitySet="TypePlanes" />
+      <End Role="Plane" EntitySet="Planes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__TypeTick__30F848ED" Association="Self.FK__Ticket__TypeTick__30F848ED">
+      <End Role="TypeTicket" EntitySet="TypeTickets" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TicketTem__TypeT__34C8D9D1" Association="Self.FK__TicketTem__TypeT__34C8D9D1">
+      <End Role="TypeTicket" EntitySet="TypeTickets" />
+      <End Role="TicketTemp" EntitySet="TicketTemps" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

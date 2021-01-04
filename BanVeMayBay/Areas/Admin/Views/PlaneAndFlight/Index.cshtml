@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+        <div class="container-fluid">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Manager</h1>
+            </div>
+            <div class="table table-hover">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h5 class="m-0 font-weight-bold text-primary">AirPort List</h5>
+                            </div>
+                            <div class="col-sm-2">
+                                @*<a class="btn btn-primary" href="@Url.Action("AddAccount","Account")">Add User</a>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Airport ID</th>
+                                                <th>Airport Name</th>
+                                                <th>Nation</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.airportList)
+                                            {
+                                                <tr>
+                                                    <td>@item.Id</td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Nation</td>
+                                                    <td>
+                                                        <a>
+                                                            @Html.ActionLink("Edit", "EditAirport", new { apid = item.Id }, new { @class = "btn btn-primary" })
+                                                        </a>
+                                                        <a>
+                                                            @Html.ActionLink("Delete", "DeleteAccount", new { apid = item.Id }, new { onclick = "return confirm('Are you sure to delete this user?');", @class = "btn btn-danger" })
+                                                        </a>
+                                                        @*<a href="@Url.Action("EditUser","User",new { Id = item.Id })" class="btn btn-success"> Edit User</a>*@
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="table table-hover">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h5 class="m-0 font-weight-bold text-primary">Plane List</h5>
+                            </div>
+                            <div class="col-sm-2">
+                                @*<a class="btn btn-primary" href="@Url.Action("AddAccount","Account")">Add User</a>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Plane Id</th>
+                                                <th>Plane Name</th>
+                                                <th>Type Plane</th>
+                                                <th>So Ghe Hang 1</th>
+                                                <th>So Ghe Hang 2</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.planeList)
+                                            {
+                                                <tr>
+                                                    <td>@item.Id</td>
+                                                    <td>@item.Name</td>
+                                                    @foreach(var item1 in ViewBag.TypePlane)
+                                                    {
+                                                        if(item.TypeId == item1.Id)
+                                                        {
+                                                            <td>
+                                                                @item1.Name
+                                                            </td>
+                                                        }
+                                                    }
+                                                    <td>
+                                                        @item.SoGheHang1
+                                                    </td>
+                                                    <td>
+                                                        @item.SoGheHang2
+                                                    </td>
+                                                    <td>
+                                                        <a>
+                                                            @Html.ActionLink("Edit", "EditAirport", new { apid = item.Id }, new { @class = "btn btn-primary" })
+                                                        </a>
+                                                        <a>
+                                                            @Html.ActionLink("Delete", "DeleteAccount", new { apid = item.Id }, new { onclick = "return confirm('Are you sure to delete this user?');", @class = "btn btn-danger" })
+                                                        </a>
+                                                        @*<a href="@Url.Action("EditUser","User",new { Id = item.Id })" class="btn btn-success"> Edit User</a>*@
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

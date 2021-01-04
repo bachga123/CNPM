@@ -1,0 +1,83 @@
+﻿@model PagedList.IPagedList<BanVeMayBay.Models.Flight>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "FlightList";
+    Layout = "~/Areas/Employee/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Flight List</h1>
+                    </div>
+                    <div class="table table-hover">
+
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <h5 class="m-0 font-weight-bold text-primary">Flight</h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a class="btn btn-primary" href="@Url.Action("AddFlight","Ticket")">Add Flight</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Ten May Bay</th>
+                                                        <th>Ngay Khoi Hanh</th>
+                                                        <th>Thoi gian bay</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.Id</td>
+                                                            <td>@item.Plane.Name</td>
+                                                            <td>@item.NgayGio</td>
+                                                            <td>@item.ThoiGianbay</td>
+                                                            <td>
+                                                                <a  class = "btn btn-primary" href=" @Url.Action("FlightDetails","Ticket", new { id = item.Id })" >
+                                                                    Details
+                                                                </a>
+                                                                <a>
+                                                                    @Html.ActionLink("Edit", "EditFlight", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                                                </a>
+                                                                @*<a href="@Url.Action("EditUser","User",new { Id = item.Id })" class="btn btn-success"> Edit User</a>*@
+                                                                <a href="@Url.Action( "DeleteFlight", "Ticket",new { id = item.Id })" onclick = "return confirm('Are you sure to delete this flight?');" class="btn btn-danger">Delete</a>
+                                                     
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="dataTables_paginate">
+                                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

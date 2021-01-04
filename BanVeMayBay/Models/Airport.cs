@@ -17,7 +17,5 @@ namespace BanVeMayBay.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Nation { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public System.DateTime ModifyDate { get; set; }
     }
 }

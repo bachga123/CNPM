@@ -16,12 +16,11 @@ namespace BanVeMayBay.Models
     {
         public int Id { get; set; }
         public Nullable<int> TypeTicketId { get; set; }
-        public Nullable<int> SeatId { get; set; }
         public Nullable<int> FlightId { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public System.DateTime ModifyDate { get; set; }
+        public Nullable<int> CusId { get; set; }
+        public Nullable<bool> Status { get; set; }
     
-        public virtual Flight Flight { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual TypeTicket TypeTicket { get; set; }
     }
 }

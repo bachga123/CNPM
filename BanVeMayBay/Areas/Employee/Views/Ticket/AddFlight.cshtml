@@ -1,0 +1,85 @@
+﻿@model BanVeMayBay.Models.Flight
+
+@{
+    ViewBag.Title = "AddFlight";
+    Layout = "~/Areas/Employee/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Flight</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PlaneId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.PlaneId, (IEnumerable<SelectListItem>)Session["planeList"] ?? new List<SelectListItem>(), null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SanBayDi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.SanBayDi, (IEnumerable<SelectListItem>)Session["apList"] ?? new List<SelectListItem>(), null, new { @class = "form-control" })
+</div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SanBayDen, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.SanBayDen, (IEnumerable<SelectListItem>)Session["apList"] ?? new List<SelectListItem>(), null, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NgayGio, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NgayGio, new { htmlAttributes = new { @class = "form-control form-control-line datepicker", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.NgayGio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ThoiGianbay, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ThoiGianbay, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                        @Html.ValidationMessageFor(model => model.ThoiGianbay, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoLuongGheHang1, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SoLuongGheHang1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SoLuongGheHang1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoLuongGheHang2, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SoLuongGheHang2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SoLuongGheHang2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+
